@@ -1,0 +1,9 @@
+{% set cols = ["nights_booked", "booking_id", "booking_amount"] %}
+
+select
+    {% for col in cols %}
+        {{ col }}
+        {% if not loop.last %}, {% endif %}
+    {% endfor %}
+from {{ ref('bronze_bookings') }}
+order by nights_booked asc
