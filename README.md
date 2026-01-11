@@ -309,28 +309,9 @@ dbt automatically tracks data lineage, showing:
    - Ephemeral models for intermediate transformations
    - Appropriate clustering keys in Snowflake
 
-## 📚 Additional Resources
 
-- **dbt Documentation**: https://docs.getdbt.com/
-- **Snowflake Documentation**: https://docs.snowflake.com/
-- **dbt Best Practices**: https://docs.getdbt.com/guides/best-practices
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📝 License
-
-This project is part of a data engineering portfolio demonstration.
-
-## 👤 Author
-
-**Project**: Airbnb Data Engineering Pipeline  
-**Technologies**: Snowflake, dbt, AWS, Python
 
 ## 🐛 Troubleshooting
 
@@ -350,12 +331,4 @@ This project is part of a data engineering portfolio demonstration.
    - Run `dbt run --full-refresh` to rebuild from scratch
    - Verify source data timestamps
 
-## 📊 Future Enhancements
 
-- [ ] Add data quality dashboards
-- [ ] Implement CI/CD pipeline
-- [ ] Add more complex business metrics
-- [ ] Integrate with BI tools (Tableau/Power BI)
-- [ ] Add alerting and monitoring
-- [ ] Implement data masking for PII
-- [ ] Add more comprehensive testing suite
