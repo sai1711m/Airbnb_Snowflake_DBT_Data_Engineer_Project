@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: bronze_bookings
+    description: Raw bookings data from staging
+    columns:
+      - name: booking_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: listing_id
+        description: Foreign key to listings
+        tests:
+          - not_null
+      - name: booking_date
+        description: Date of booking
+        tests:
+          - not_null
+      - name: nights_booked
+        description: Number of nights
+        tests:
+          - not_null
+      - name: booking_amount
+        description: Booking amount
+        tests:
+          - not_null
+      - name: booking_status
+        description: Status of booking
+        tests:
+          - accepted_values:
+              values: ['confirmed', 'pending', 'cancelled', 'completed']
+      - name: created_at
+        tests:
+          - not_null
+
+  - name: bronze_hosts
+    description: Raw hosts data from staging
+    columns:
+      - name: host_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: host_name
+        tests:
+          - not_null
+      - name: host_since
+        tests:
+          - not_null
+      - name: response_rate
+        tests:
+          - not_null
+      - name: is_superhost
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+      - name: created_at
+        tests:
+          - not_null
+
+  - name: bronze_listings
+    description: Raw listings data from staging
+    columns:
+      - name: listing_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: host_id
+        description: Foreign key to hosts
+        tests:
+          - not_null
+      - name: property_type
+        tests:
+          - not_null
+      - name: room_type
+        tests:
+          - not_null
+      - name: city
+        tests:
+          - not_null
+      - name: country
+        tests:
+          - not_null
+      - name: accommodates
+        tests:
+          - not_null
+      - name: price_per_night
+        tests:
+          - not_null
+      - name: created_at
+        tests:
+          - not_null

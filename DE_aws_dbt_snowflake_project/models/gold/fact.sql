@@ -1,34 +1,15 @@
-{% set congigs = [
-    {
-        "table" : "AIRBNB.GOLD.OBT",
-        "columns" : "GOLD_obt.BOOKING_ID, GOLD_obt.LISTING_ID, GOLD_obt.HOST_ID,GOLD_obt.TOTAL_PRICE, GOLD_obt.ACCOMMODATES, GOLD_obt.BEDROOMS, GOLD_obt.BATHROOMS, GOLD_obt.PRICE_PER_NIGHT, GOLD_obt.RESPONSE_RATE",
-        "alias" : "GOLD_obt"
-    },
-    { 
-        "table" : "AIRBNB.GOLD.DIM_LISTINGS",
-        "columns" : "",
-        "alias" : "DIM_listings",
-        "join_condition" : "GOLD_obt.listing_id = DIM_listings.listing_id"
-    },
-    {
-        "table" : "AIRBNB.GOLD.DIM_HOSTS",
-        "columns" : "",
-        "alias" : "DIM_hosts",
-        "join_condition" : "GOLD_obt.host_id = DIM_hosts.host_id"
-    }
-] %}
-
-
-
 SELECT 
-        {{ congigs[0]['columns'] }}
-
-FROM
-    {% for config in congigs %}
-    {% if loop.first %}
-      {{ config['table'] }} AS {{ config['alias'] }}
-    {% else %}
-        LEFT JOIN {{ config['table'] }} AS {{ config['alias'] }}
-        ON {{ config['join_condition'] }}
-        {% endif %}
-        {% endfor %}
+    obt.BOOKING_ID,
+    obt.LISTING_ID,
+    obt.HOST_ID,
+    obt.TOTAL_PRICE,
+    obt.ACCOMMODATES,
+    obt.BEDROOMS,
+    obt.BATHROOMS,
+    obt.PRICE_PER_NIGHT,
+    obt.RESPONSE_RATE
+FROM {{ ref('obt') }} AS obt
+LEFT JOIN {{ ref('dim_listings') }} AS dim_listings
+    ON obt.listing_id = dim_listings.listing_id
+LEFT JOIN {{ ref('dim_hosts') }} AS dim_hosts
+    ON obt.host_id = dim_hosts.host_id

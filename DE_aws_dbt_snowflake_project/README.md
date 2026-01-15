@@ -1,15 +1,48 @@
-Welcome to your new dbt project!
+# AWS Snowflake dbt Project
 
-### Using the starter project
+Data transformation pipeline for Airbnb analytics using dbt and Snowflake.
 
-Try running the following commands:
-- dbt run
-- dbt test
+## Quick Start
 
+```bash
+# Install dependencies
+pip install -r requirements.txt
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+# Navigate to dbt project
+cd DE_aws_dbt_snowflake_project
+
+# Run models
+dbt run
+
+# Run tests
+dbt test
+
+# Generate documentation
+dbt docs generate
+dbt docs serve
+```
+
+## Project Structure
+
+- **Bronze Layer**: Raw data ingestion (incremental)
+- **Silver Layer**: Cleaned and validated data
+- **Gold Layer**: Analytics-ready fact tables and dimensions
+
+## Documentation
+
+See main [README.md](../README.md) for full documentation.
+
+## Data Quality
+
+90+ tests covering:
+- Primary key uniqueness
+- Not null constraints
+- Referential integrity
+- Business logic validation
+- Source freshness monitoring
+
+## Resources
+
+- [dbt Documentation](https://docs.getdbt.com)
+- [dbt Discourse](https://discourse.getdbt.com)
+- [dbt Slack Community](https://community.getdbt.com)

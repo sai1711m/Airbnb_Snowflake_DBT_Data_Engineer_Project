@@ -1,4 +1,4 @@
-{{ config(materialized = 'incremental')}}
+{{ config(materialized = 'incremental', unique_key = 'booking_id')}}
 
  select * from {{ source('staging', 'bookings') }}
 

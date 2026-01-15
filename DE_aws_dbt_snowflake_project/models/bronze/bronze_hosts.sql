@@ -1,4 +1,4 @@
-{{ config(materialized = 'incremental')}}
+{{ config(materialized = 'incremental', unique_key = 'host_id')}}
 
  select * from {{ source('staging', 'hosts') }}
 
